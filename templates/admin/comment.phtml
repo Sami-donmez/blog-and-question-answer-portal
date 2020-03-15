@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <?php include 'head.phtml'?>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <?php include 'header.phtml'?>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <?php include 'navbar.phtml'?>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+          </div>
+
+
+          <!-- Content Row -->
+
+
+          <div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" role="grid" aria-describedby="dataTable_info" style="width: 100%;" width="100%" cellspacing="0">
+                  <thead>
+                  <tr><th rowspan="1" colspan="1">İsim</th> <th rowspan="1" colspan="1">durum</th><th rowspan="1" colspan="1">post</th><th rowspan="1" colspan="1">yorum</th><th rowspan="1" colspan="1">tarih</th><th rowspan="1" colspan="1">işlemler</th></tr>
+                  </thead>
+                  <tfoot>
+                  <tr><th rowspan="1" colspan="1">İsim</th> <th rowspan="1" colspan="1">durum</th><th rowspan="1" colspan="1">post</th><th rowspan="1" colspan="1">yorum</th><th rowspan="1" colspan="1">tarih</th><th rowspan="1" colspan="1">işlemler</th></tr>
+                  </tfoot>
+                  <tbody>
+                  <?php for ($i=0; $i <count($comment) ; $i++) { ?>
+
+                  <tr role="row" class="odd">
+                      <td class="sorting_1"><?=$comment[$i]->name?></td>
+                      <th rowspan="1" colspan="1">
+                      <?php if ($comment[$i]->status==1) { ?>
+                        <a style="color:green">onaylandı</a>
+                      <?php }else{?>
+                        <a style="color:red">onay bekliyor</a>
+                      <?php }?>
+                      
+                      </th>
+                      <td class="sorting_1"><?=$comment[$i]->title?></td>
+                      <td class="sorting_1"><?=$comment[$i]->comment?></td>
+                      <td class="sorting_1"><?=$comment[$i]->date?></td>
+                      <td>
+                      <button onclick="submit(<?=$comment[$i]->id?>)">onayla</button>
+                      <button onclick="deletepost(<?=$comment[$i]->id?>)">silme</button>
+                      </td>
+                      </tr>
+
+<?php              } ?>
+
+                    </tbody>
+                </table>
+                </div>
+
+
+     
+
+
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2019</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <?php include 'script.phtml'?>
+  <script>
+  function submit(param) {
+    $.ajax({
+              url: '<?=$url?>/admin/comment/submit/'+param,
+              type: 'get',
+              contentType: false,
+              processData: false,
+              success: function(response){
+                  if(response.success == "ok"){
+                        alert("YORUM ONAYLANDI");
+                          window.location.reload(false);
+                  }else{
+                      alert("YORUM ONAYLANMANDI");
+                  }
+              },
+          });
+      
+  };
+  function deletepost(param) {
+    $.ajax({
+              url: '<?=$url?>/admin/comment/delete/'+param,
+              type: 'get',
+              contentType: false,
+              processData: false,
+              success: function(response){
+                  if(response.success == "ok"){
+                        alert("YORUM SİLİNDİ");
+                          window.location.reload(false);
+                  }else{
+                      alert("YORUM SİLİNEMEDİ");
+                  }
+              },
+          });
+      
+  };
+  </script>
+
+
+</body>
+
+</html>

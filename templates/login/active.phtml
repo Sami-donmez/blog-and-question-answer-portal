@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>New Password</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="<?=$url?>/templates/login/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="<?=$url?>/templates/login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="<?=$url?>/templates/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="<?=$url?>/templates/login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="<?=$url?>/templates/login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="<?=$url?>/templates/login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="<?=$url?>/templates/login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="<?=$url?>/templates/login/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+            <h3><?=$message?></h3>
+			<div class="wrap-login100">
+                <?php if ($success==0){ ?>
+                <form class="login100-form validate-form">
+                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" required placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+                    <div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+                            send link
+						</button>
+					</div>
+				</form>
+                <?php }else{?>
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn">
+                        <a href="<?=$url?>/">Anasayfa</a>
+                    </button>
+                </div>
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+    <!--===============================================================================================-->
+    <script src="<?=$url?>/templates/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="<?=$url?>/templates/login/vendor/bootstrap/js/popper.js"></script>
+    <script src="<?=$url?>/templates/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="<?=$url?>/templates/login/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="<?=$url?>/templates/login/vendor/tilt/tilt.jquery.min.js"></script>
+    <script >
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="<?=$url?>/templates/login/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Colorlib Wordify &mdash; Minimal Blog Template</title>
+      <?php include 'component/head.phtml'?>
+  </head>
+  <body>
+    
+
+    <div class="wrap">
+
+    <?php include 'component/header.phtml'?>
+      <!-- END header -->
+<br>
+        <br>
+        <br>
+        <br>
+      <!-- END section -->
+
+      <section class="site-section py-sm">
+        <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="bio text-center">
+                      <img src="<?=$url?>/templates/images/<?=$user->image?>" alt="Image Placeholder" class="img-fluid">
+                      <div class="bio-body">
+                          <h2><?=$user->name?>  <?=$user->surname?></h2>
+                          <p><?=$userdetail->about_me?></p>
+                          <p><a href="mailto:<?=$user->email?>" class="btn btn-primary btn-sm rounded">Send email</a></p>
+                          <p class="social">
+                              <a href="<?=$userdetail->facebook?>" class="p-2"><span class="fa fa-facebook"></span></a>
+                              <a href="<?=$userdetail->twitter?>" class="p-2"><span class="fa fa-twitter"></span></a>
+                              <a href="<?=$userdetail->instagram?>" class="p-2"><span class="fa fa-instagram"></span></a>
+                              <a href="<?=$userdetail->youtube?>" class="p-2"><span class="fa fa-youtube-play"></span></a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </section>
+<br>
+        <section class="site-section py-sm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 class="mb-4">User Posts</h2>
+                    </div>
+                </div>
+                <div class="row blog-entries">
+                    <div class="col-md-12 col-lg-12 main-content">
+                        <div class="row">
+
+                            <?php
+                            if(count($post)!=0){
+                            for ($i=0;$i<count($post);$i++){?>
+                                <div class="col-md-4">
+                                    <a href="<?=$url?>/article/<?=$post[$i]->sef_link?>" class="blog-entry element-animate" data-animate-effect="fadeIn">
+                                        <img src="<?=$url?>/templates/images/<?=$post[$i]->image?>" alt="Image placeholder">
+                                        <div class="blog-content-body">
+                                            <div class="post-meta">
+                                                <span class="mr-2"><?=$post[$i]->date?></span> &bullet;
+                                                <span class="ml-2"><span class="fa fa-comments"></span> <?=$post[$i]->visitor?></span>
+                                            </div>
+                                            <h2><?=$post[$i]->title?></h2>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php }}else{ ?>
+
+                            <h3>bu kişiye ait yazı bulunamadı.</h3>
+                            <?php } ?>
+
+                        </div>
+                </div>
+            </div>
+        </section>
+        <br>
+        <?php include 'component/footer.phtml'?>
+    <!-- loader -->
+<?php
+include 'component/script.phtml'; ?>
+  </body>
+</html>

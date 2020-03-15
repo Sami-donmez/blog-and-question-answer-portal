@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Colorlib Wordify &mdash; Minimal Blog Template</title>
+      <?php include 'component/head.phtml'?>
+  </head>
+  <body>
+    
+
+    <div class="wrap">
+
+    <?php include 'component/header.phtml'?>
+      <!-- END header -->
+
+
+      <!-- END section -->
+
+      <section class="site-section py-sm">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <h2 class="mb-4">Latest Posts</h2>
+            </div>
+          </div>
+          <div class="row blog-entries">
+            <div class="col-md-12 col-lg-8 main-content">
+              <div class="row">
+
+                  <?php
+                  for ($i=0;$i<count($post);$i++){?>
+                      <div class="col-md-6">
+                          <a href="<?=$url?>/article/<?=$post[$i]->sef_link?>" class="blog-entry element-animate" data-animate-effect="fadeIn">
+                              <img src="<?=$url?>/templates/images/<?=$post[$i]->image?>" alt="Image placeholder">
+                              <div class="blog-content-body">
+                                  <div class="post-meta">
+                                      <span class="mr-2"><?=$post[$i]->date?></span> &bullet;
+                                      <span class="ml-2"><span class="fa fa-comments"></span> <?=$post[$i]->visitor?></span>
+                                  </div>
+                                  <h2><?=$post[$i]->title?></h2>
+                              </div>
+                          </a>
+                      </div>
+                  <?php } ?>
+              </div>
+
+              <div class="row mt-5">
+                <div class="col-md-12 text-center">
+                  <nav aria-label="Page navigation" class="text-center">
+                    <ul class="pagination">
+                      <li class="page-item  active"><a class="page-link" href="#">&lt;</a></li>
+                        <?php
+                        for ($i=1;$i<$len;$i++){?>
+                      <li class="page-item"><a class="page-link" href="page/<?=$i?>"><?=$i?></a></li>
+                        <?php }?>
+
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+            <!-- END main-content -->
+
+            <?php include 'component/leftbar.phtml'?>
+              <!-- END sidebar-box -->
+
+
+            <!-- END sidebar -->
+          </div>
+        </div>
+      </section>
+
+        <?php include 'component/footer.phtml'?>
+      <!-- END footer -->
+
+    </div>
+    
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+
+<?php
+include 'component/script.phtml'; ?>
+  </body>
+</html>

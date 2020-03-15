@@ -1,0 +1,20 @@
+  <!-- Bootstrap core JavaScript-->
+  <script src="<?=$url?>/templates/admin/vendor/jquery/jquery.min.js"></script>
+  <script src="  https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="<?=$url?>/templates/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="<?=$url?>/templates/admin/js/sb-admin-2.min.js"></script>
+  <script>
+  $(document).ajaxStart(function() {
+  $('<div id="_pblloading"><style> @-webkit-keyframes rotate{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes rotate{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes chasingBallBounce{50%{-webkit-transform:scale(0);transform:scale(0)}}@keyframes chasingBallBounce{50%{-webkit-transform:scale(0);transform:scale(0)}}.site_loading{height:100%;width:100%;position:fixed;z-index:9999999999999999999999999999;background-color:rgba(0,0,0,.3);left:0;top:0;font-size:150px;color:#fff;display:none}.arc,.arc_dis{position:absolute}.arc_dis,.arc_dis:before{z-index:999999999999999999999999999999}.arc::after,.arc::before,.arc_dis:before{position:absolute;background-color:#bfbfbf}.arc_dis{left:calc(50% - 25px);top:calc(50% - 25px);width:58px;height:58px;-moz-border-radius:100px;-webkit-border-radius:100px;border-radius:100px;-moz-box-shadow:0 0 5px #696969;-webkit-box-shadow:0 0 5px #696969;box-shadow:0 0 5px #696969;background-color:#f5f5f5}.arc_dis:before{content:"";width:4px;height:4px;left:calc(50% - 2px);top:calc(50% - 2px);border-radius:100px;-moz-border-radius:100px;-webkit-border-radius:100px}.arc{margin:0;border:2px solid #ddd;width:50px;height:50px;-moz-border-radius:100px;-webkit-border-radius:100px;border-radius:100px;padding:0;left:calc(50% - 25px);top:calc(50% - 25px)}.arc::after,.arc::before{content:\'\';top:4%;left:48%;width:4%;height:46%;-webkit-transform-origin:50% 100%;-ms-transform-origin:50% 100%;transform-origin:50% 100%;-moz-border-radius:100px;-webkit-border-radius:100px;border-radius:100px;-webkit-animation:rotate 2s infinite linear;animation:rotate 2s infinite linear}.arc::after{height:36%;top:14%;-webkit-animation-duration:12s;animation-duration:12s} </style> <div class="site_loading"> <div class="arc_dis"> <div class="arc"></div> </div> </div> <div id="site_locked"></div>  </div>').prependTo('body');
+  $(".site_loading").show();
+}).ajaxStop(function() {
+  $("#_pblloading").remove();
+  $(".site_loading").hide();
+});
+  </script>
+
+  <!-- Page level plugins -->

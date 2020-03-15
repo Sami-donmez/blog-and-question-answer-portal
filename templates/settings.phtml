@@ -1,0 +1,72 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Colorlib Wordify &mdash; Minimal Blog Template</title>
+      <?php include 'component/head.phtml'?>
+  </head>
+  <body>
+    
+
+    <div class="wrap">
+
+    <?php include 'component/header.phtml'?>
+      <!-- END header -->
+<br>
+        <br>
+        <br>
+        <br>
+      <!-- END section -->
+        <h2>Sifre degiştir</h2>
+        <hr>
+        <div class="col-md-12 my-1 mx-1">
+        <div class="form-group">
+         <label for="exampleInputPassword1">Eski sifre</label>
+        <input type="password" class="form-control" required id="old" placeholder="Password">
+        </div>
+        <div class="form-group">
+         <label for="exampleInputPassword1">Yeni sifre</label>
+        <input type="password" class="form-control" required id="new" placeholder="Password">
+        </div>
+        <div class="form-group">
+         <label for="exampleInputPassword1">Yeni sifre tekrar</label>
+        <input type="password" class="form-control" required id="new2" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary" onclick="submit()">Kaydet</button>
+        </div>
+        <hr>
+        <br>
+        <?php include 'component/footer.phtml'?>
+    <!-- loader -->
+<?php
+include 'component/script.phtml'; ?>
+<script>
+function submit(){
+var old=$('#old').val();
+var newp=$('#new').val();
+var newp2=$('#new2').val();
+          if(old !=""&&newp!=""&&newp!=""){
+              if (newp==newp2) {
+                var data="oldpassword="+old+"&newpassword="+newp2;
+                $.ajax({
+                    url: '<?=$url?>/settings/update',
+                    type: 'post',
+                    data: data,
+                    success: function(response){
+                        if(response.success == "ok"){
+                           alert("şifreniz başarı ile degiştirildi");
+                        }else{
+                            alert('şifreniz başarı ile degiştirilemedi');
+                        }
+                    },
+                })        
+              }else{
+                  alert("şifreler uyuşmuyor");
+              }
+          }else {
+              alert("boş alan bırakılamaz.")
+          }
+}
+</script>
+</body>
+</html>

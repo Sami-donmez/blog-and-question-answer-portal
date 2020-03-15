@@ -1,0 +1,31 @@
+<div class="col-md-12 col-lg-4 sidebar">
+    <div class="sidebar-box search-form-wrap">
+        <form action="#" class="search-form">
+            <div class="form-group">
+                <span class="icon fa fa-search"></span>
+                <input type="text" class="form-control" id="s" placeholder="Type a keyword and hit enter">
+            </div>
+        </form>
+    </div>
+    <!-- END sidebar-box -->
+
+    <!-- END sidebar-box -->
+    <div class="sidebar-box">
+        <h3 class="heading">kategoriler</h3>
+        <div class="post-entry-sidebar">
+            <ul>
+                <?php
+                for ($i=0;$i<count($pcategory);$i++){?>
+                    <li>
+                        <a href="<?=$url?>/question-answer/category/<?=$pcategory[$i]->sef_link?>">
+                            <div class="text">
+                                <h4><?=$pcategory[$i]->category_name?></h4>
+                            </div>
+                        </a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
+    <!-- END sidebar-box -->
+</div>

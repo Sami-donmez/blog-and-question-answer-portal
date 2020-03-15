@@ -1,0 +1,81 @@
+
+<header role="banner">
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-12 p-0">
+                    <h4>Fırat Üniversitesi İngiliz Dil ve Edebiyatı Ögrenci Toplulugu</h4>
+                </div>
+                <div class="col-md-3 col-sm-12 ">
+                    <div class="row ">
+                        <?php if (!isset($_SESSION['giris'])){ ?>
+                        <div class="col-md-6 col-sm-12"><a href="<?=$url?>/login"><button type="button" class="btn btn-ligth">Giriş Yap</button></a></div>
+                        <br>
+                        <div class="col-md-6 col-sm-12"> <a href="<?=$url?>/register"><button type="button" class="btn btn-dark">Kayıt Ol</button></a></div>
+                        <?php }else{?>
+                    
+                        <div class="col-md-6 col-sm-12 ">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  işlemler
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="<?=$url?>/new-article">Yeni yazı</a>
+                                  <a class="dropdown-item" href="<?=$url?>/new-question">Yeni soru</a>
+                                  <a class="dropdown-item" href="<?=$url?>/my-question">Sorularım</a>
+                                  <a class="dropdown-item" href="<?=$url?>/my-post">Yazılarım</a>
+                                  <a class="dropdown-item" href="<?=$url?>/settings">ayarlar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12"><a href="<?=$url?>/logout"><button type="button" class="btn btn-ligth">Çıkış Yap</button></a></div>
+                       <?php }; ?>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container logo-wrap">
+        <div class="row pt-5">
+            <div class="col-12 text-center">
+                <a class="absolute-toggle d-block d-md-none" data-toggle="collapse" href="#navbarMenu" role="button" aria-expanded="false" aria-controls="navbarMenu"><span class="burger-lines"></span></a>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <nav class="navbar navbar-expand-md  navbar-light bg-light">
+
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="<?=$url?>">Anasayfa</a>
+                    </li>
+                    <?php
+                    for ($i=0;$i<count($category);$i++){?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=$url?>/category/<?=$category[$i]->sef_link?>"><?=$category[$i]->category_name?></a>
+                        </li>
+                    <?php } ?>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=$url?>/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=$url?>/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=$url?>/question-answer">Question&Answer</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+
+</header>

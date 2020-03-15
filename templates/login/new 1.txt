@@ -1,0 +1,15 @@
+blog 
+blog detay
+soru cevap
+soru cevap detay 
+giriş
+çıkıs
+kayıt
+sifre yenileme
+soru ekleme
+profil
+profil düzenleme
+admin
+-blog yazı ekleme 
+-blog yazı yonetimi(ekle sil güncelle onayla)
+-yorumları yonet(sil onayla)

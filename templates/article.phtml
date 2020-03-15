@@ -1,0 +1,119 @@
+<!doctype html>
+  
+<html lang="en">
+  <head>
+    <title>Colorlib Wordify &mdash; Minimal Blog Template</title>
+      <?php include 'component/head.phtml'?>
+  </head>
+  <body>
+    
+
+    <div class="wrap">
+        <?php include 'component/header.phtml'?>
+      <!-- END header -->
+
+    <section class="site-section py-lg">
+      <div class="container">
+        
+        <div class="row blog-entries element-animate">
+
+          <div class="col-md-12 col-lg-8 main-content">
+            <img src="<?=$url?>/templates/images/<?=$post->image?>" alt="Image" class="img-fluid mb-5">
+             <div class="post-meta">
+                 <span class="author mr-2"><img src="<?=$url?>/templates/images/<?=$user->image?>" alt="" class="mr-2"><a href="<?=$url?>/user/<?=$user->username?> " ><?=$user->name?>  <?=$user->surname?></a></span>&bullet;
+                        <span class="mr-2"><?=$post->date?> </span> &bullet;
+                        <span class="ml-2"><span class="fa fa-comments"></span> <?=$post->visitor?></span>
+                      </div>
+            <h1 class="mb-4"><?=$post->title?></h1>
+            <a class="category mb-5" href="#"><?=$postcategory->category_name?></a>
+
+            <div class="post-content-body">
+
+                <div style="word-wrap:break-word;"><?=$post->text?></div>
+            <div class="pt-5">
+                <?php if (count($comment)==0){?>
+                <h3 class="mb-5">Bu yazıda hiç yorum yok.İlk yorumu sen yazmak ister misin?</h3>
+                <?php }else{?>
+              <h3 class="mb-5"><?=count($comment)?> Comments</h3>
+                <?php }?>
+              <ul class="comment-list">
+                  <?php
+                  for ($i=0;$i<count($comment);$i++){
+                  ?>
+                <li class="comment">
+                  <div class="vcard">
+                  </div>
+                  <div class="comment-body">
+                    <h3><?=$comment[$i]->name?></h3>
+                    <div class="meta"><?=$comment[$i]->name?></div>
+                    <p><?=$comment[$i]->text?></p>
+
+                  </div>
+                </li>
+                <?php }?>
+
+              </ul>
+              <!-- END comment-list -->
+              <?php if(isset($_SESSION['giris'])){?>
+                  <div class="comment-form-wrap pt-5">
+                      <h3 class="mb-5">Leave a comment</h3>
+                      <form action="#" class="p-5 bg-light">
+                          <div class="form-group">
+                              <label for="name">Name *</label>
+                              <input type="text" class="form-control" id="name">
+                          </div>
+                          <div class="form-group">
+                              <label for="email">Email *</label>
+                              <input type="email" class="form-control" id="email">
+                          </div>
+                          <div class="form-group">
+                              <label for="website">Website</label>
+                              <input type="url" class="form-control" id="website">
+                          </div>
+
+                          <div class="form-group">
+                              <label for="message">Message</label>
+                              <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                          </div>
+                          <div class="form-group">
+                              <input type="submit" value="Post Comment" class="btn btn-primary">
+                          </div>
+
+                      </form>
+                  </div>
+              <?php }else{?>
+                  <div class="comment-form-wrap pt-5">
+                      <h3 class="mb-5">Cevap yazabilmeniz için üye olmalısınız.</h3>
+                      <button type="button" class="btn btn-primary"><a href="<?=$url?>/login"> Giriş Yap</a></button>
+                      <button type="button" class="btn btn-success"><a href="<?=$url?>/register">Kayıt Ol</a></button>
+                  </div>
+              <?php } ?>
+
+            </div>
+
+          </div>
+          </div>
+            <br>
+          <!-- END main-content -->
+
+            <?php include 'component/leftbar.phtml'?>
+          <!-- END sidebar -->
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- END section -->
+
+        <?php include 'component/footer.phtml'?>
+      <!-- END footer -->
+
+    </div>
+    
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+    <?php
+    include 'component/script.phtml'; ?>
+  </body>
+</html>
